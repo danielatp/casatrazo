@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { fetchArticles } from '../store/articles';
+import { fetchArticles } from '../../store/articles';
 
 class AllArticles extends Component {
   constructor(props){
@@ -12,7 +12,6 @@ class AllArticles extends Component {
   }
 
   render(){
-    console.log(this.props)
     return(
       <div>
         <h2>All Articles</h2>

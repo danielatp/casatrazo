@@ -71,6 +71,110 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./client/components/AllArticles.js":
+/*!******************************************!*\
+  !*** ./client/components/AllArticles.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _articles = __webpack_require__(/*! ../store/articles */ "./client/store/articles.js");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AllArticles = function (_Component) {
+  _inherits(AllArticles, _Component);
+
+  function AllArticles(props) {
+    _classCallCheck(this, AllArticles);
+
+    return _possibleConstructorReturn(this, (AllArticles.__proto__ || Object.getPrototypeOf(AllArticles)).call(this, props));
+  }
+
+  _createClass(AllArticles, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.props.loadArticles();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      console.log(this.props);
+      return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(
+          'h2',
+          null,
+          'All Articles'
+        ),
+        _react2.default.createElement(
+          'ul',
+          { id: 'all-articles-ul' },
+          this.props.articles.map(function (article) {
+            return _react2.default.createElement(
+              'li',
+              { key: article.id },
+              _react2.default.createElement(
+                'h3',
+                null,
+                article.title
+              ),
+              _react2.default.createElement(
+                'p',
+                null,
+                article.content
+              )
+            );
+          })
+        )
+      );
+    }
+  }]);
+
+  return AllArticles;
+}(_react.Component);
+
+var mapStateToProps = function mapStateToProps(storeState) {
+  return {
+    articles: storeState.articles
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    loadArticles: function loadArticles() {
+      return dispatch((0, _articles.fetchArticles)());
+    }
+  };
+};
+
+var AllArticlesContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(AllArticles);
+exports.default = AllArticlesContainer;
+
+/***/ }),
+
 /***/ "./client/components/Main.js":
 /*!***********************************!*\
   !*** ./client/components/Main.js ***!
@@ -96,6 +200,10 @@ var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-r
 var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
 
 var _articles = __webpack_require__(/*! ../store/articles */ "./client/store/articles.js");
+
+var _AllArticles = __webpack_require__(/*! ./AllArticles */ "./client/components/AllArticles.js");
+
+var _AllArticles2 = _interopRequireDefault(_AllArticles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -124,11 +232,24 @@ var Main = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      console.log('props', this.props);
       return _react2.default.createElement(
-        'h1',
+        'div',
         null,
-        'yayayay'
+        _react2.default.createElement(
+          'h1',
+          null,
+          'Main'
+        ),
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/articles' },
+          'see all articles'
+        ),
+        _react2.default.createElement(
+          _reactRouterDom.Switch,
+          null,
+          _react2.default.createElement(_reactRouterDom.Route, { path: '/articles', component: _AllArticles2.default })
+        )
       );
     }
   }]);
@@ -150,7 +271,7 @@ var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   };
 };
 
-var MainContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Main);
+var MainContainer = (0, _reactRouterDom.withRouter)((0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Main));
 
 exports.default = MainContainer;
 
@@ -174,6 +295,8 @@ var _reactDom = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/i
 
 var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 
+var _reactRouterDom = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/es/index.js");
+
 var _Main = __webpack_require__(/*! ./components/Main */ "./client/components/Main.js");
 
 var _Main2 = _interopRequireDefault(_Main);
@@ -187,7 +310,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 (0, _reactDom.render)(_react2.default.createElement(
   _reactRedux.Provider,
   { store: _store2.default },
-  _react2.default.createElement(_Main2.default, null)
+  _react2.default.createElement(
+    _reactRouterDom.BrowserRouter,
+    null,
+    _react2.default.createElement(_Main2.default, null)
+  )
 ), document.getElementById('root'));
 
 /***/ }),

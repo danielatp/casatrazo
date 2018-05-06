@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, Link, withRouter } from 'react-router-dom';
 // import history from 'history';
 import { fetchArticles } from '../store/articles';
+import AllArticles from './AllArticles';
 
 class Main extends React.Component {
   constructor(props){
@@ -14,9 +15,16 @@ class Main extends React.Component {
   }
 
   render(){
-    console.log('props', this.props)
     return(
-      <h1>yayayay</h1>
+      <div>
+        <h1>Main</h1>
+        <Link to='/articles'>
+          see all articles
+        </Link>
+        <Switch>
+          <Route path='/articles' component={AllArticles} />
+        </Switch>
+      </div>
     )
   }
 }
@@ -33,6 +41,6 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const MainContainer = connect(mapStateToProps, mapDispatchToProps)(Main);
+const MainContainer = withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
 
 export default MainContainer;

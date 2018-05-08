@@ -1,27 +1,22 @@
 import React from 'react';
 // import Modal from 'react-responsive-modal';
 import { Link } from 'react-router-dom';
-import MyModal from '../MyModal';
+import MyModalContainer from '../MyModal';
+import Login from '../Login';
 import './style.scss';
 
-class Navbar extends React.Component {
-  constructor(props){
-    super(props)
-
-
-  }
-
-
-  render() {
-    return (
-      <div className='navbar'>
-        <MyModal
-          name='Admin'
-          content='login modal'
-        />
-      </div>
-    );
-  }
+const Navbar = (props) => {
+  return (
+    <div className='navbar'>
+      <Link to='/' className='navbar_logo'>
+        <div>CASATRAZO LOGO</div>
+      </Link>
+      <MyModalContainer
+        name='Admin'
+        content={<Login />}
+      />
+    </div>
+  );
 }
 
 export default Navbar;

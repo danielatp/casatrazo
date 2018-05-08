@@ -174,6 +174,161 @@ exports.default = AllArticlesContainer;
 
 /***/ }),
 
+/***/ "./client/components/Login/index.js":
+/*!******************************************!*\
+  !*** ./client/components/Login/index.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _modal = __webpack_require__(/*! ../../store/modal */ "./client/store/modal.js");
+
+__webpack_require__(/*! ./style.scss */ "./client/components/Login/style.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Login = function (_React$Component) {
+  _inherits(Login, _React$Component);
+
+  function Login(props) {
+    _classCallCheck(this, Login);
+
+    var _this = _possibleConstructorReturn(this, (Login.__proto__ || Object.getPrototypeOf(Login)).call(this, props));
+
+    _this.handleSubmit = _this.handleSubmit.bind(_this);
+    return _this;
+  }
+
+  _createClass(Login, [{
+    key: 'handleSubmit',
+    value: function handleSubmit(event) {
+      event.preventDefault();
+      // close modal
+      this.props.onCloseModal();
+      var email = event.target.email.value;
+      var password = event.target.password.value;
+      console.log('dsfzgdfgggs', { email: email, password: password });
+      // dispatch(login(email, password))
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      console.log(this.props);
+      return _react2.default.createElement(
+        'div',
+        { className: 'login-wrapper' },
+        _react2.default.createElement(
+          'form',
+          { onSubmit: this.handleSubmit },
+          _react2.default.createElement(
+            'div',
+            { className: 'login-wrapper_section' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'email' },
+              _react2.default.createElement(
+                'small',
+                null,
+                'Email'
+              )
+            ),
+            _react2.default.createElement('input', { name: 'email', type: 'text' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'login-wrapper_section' },
+            _react2.default.createElement(
+              'label',
+              { htmlFor: 'password' },
+              _react2.default.createElement(
+                'small',
+                null,
+                'Password'
+              )
+            ),
+            _react2.default.createElement('input', { name: 'password', type: 'password' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { className: 'login-wrapper_section' },
+            _react2.default.createElement(
+              'button',
+              { type: 'submit' },
+              'Login'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Login;
+}(_react2.default.Component);
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    onCloseModal: function onCloseModal() {
+      return dispatch((0, _modal.closeModal)());
+    }
+  };
+};
+
+var LoginContainer = (0, _reactRedux.connect)(null, mapDispatchToProps)(Login);
+exports.default = LoginContainer;
+
+/***/ }),
+
+/***/ "./client/components/Login/style.scss":
+/*!********************************************!*\
+  !*** ./client/components/Login/style.scss ***!
+  \********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./style.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./client/components/Login/style.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./client/components/Main/index.js":
 /*!*****************************************!*\
   !*** ./client/components/Main/index.js ***!
@@ -300,6 +455,12 @@ var _reactResponsiveModal = __webpack_require__(/*! react-responsive-modal */ ".
 
 var _reactResponsiveModal2 = _interopRequireDefault(_reactResponsiveModal);
 
+var _reactRedux = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+
+var _modal = __webpack_require__(/*! ../../store/modal */ "./client/store/modal.js");
+
+__webpack_require__(/*! ./style.scss */ "./client/components/MyModal/style.scss");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -317,32 +478,22 @@ var MyModal = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (MyModal.__proto__ || Object.getPrototypeOf(MyModal)).call(this, props));
 
     _this.state = {
-      showModal: false,
       name: props.name,
       content: props.content
     };
-    _this.onOpenModal = _this.onOpenModal.bind(_this);
-    _this.onCloseModal = _this.onCloseModal.bind(_this);
     return _this;
   }
 
   _createClass(MyModal, [{
-    key: 'onOpenModal',
-    value: function onOpenModal() {
-      this.setState({ showModal: true });
-    }
-  }, {
-    key: 'onCloseModal',
-    value: function onCloseModal() {
-      this.setState({ showModal: false });
-    }
-  }, {
     key: 'render',
     value: function render() {
       var _state = this.state,
-          showModal = _state.showModal,
           name = _state.name,
           content = _state.content;
+      var _props = this.props,
+          onOpenModal = _props.onOpenModal,
+          onCloseModal = _props.onCloseModal,
+          showModal = _props.showModal;
 
       return _react2.default.createElement(
         'div',
@@ -351,14 +502,15 @@ var MyModal = function (_React$Component) {
           'button',
           {
             className: 'modal_btn',
-            onClick: this.onOpenModal },
+            onClick: onOpenModal },
           name
         ),
-        _react2.default.createElement(
-          _reactResponsiveModal2.default,
-          { open: showModal, onClose: this.onCloseModal, center: true },
-          content
-        )
+        _react2.default.createElement(_reactResponsiveModal2.default, {
+          center: true,
+          open: showModal,
+          onClose: onCloseModal,
+          children: content
+        })
       );
     }
   }]);
@@ -366,7 +518,55 @@ var MyModal = function (_React$Component) {
   return MyModal;
 }(_react2.default.Component);
 
-exports.default = MyModal;
+var mapStateToProps = function mapStateToProps(storeState) {
+  return {
+    showModal: storeState.showModal
+  };
+};
+
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+  return {
+    onOpenModal: function onOpenModal() {
+      return dispatch((0, _modal.openModal)());
+    },
+    onCloseModal: function onCloseModal() {
+      return dispatch((0, _modal.closeModal)());
+    }
+  };
+};
+
+var MyModalContainer = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(MyModal);
+exports.default = MyModalContainer;
+
+/***/ }),
+
+/***/ "./client/components/MyModal/style.scss":
+/*!**********************************************!*\
+  !*** ./client/components/MyModal/style.scss ***!
+  \**********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader!../../../node_modules/sass-loader/lib/loader.js!./style.scss */ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./client/components/MyModal/style.scss");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
 
 /***/ }),
 
@@ -384,8 +584,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _react = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 
 var _react2 = _interopRequireDefault(_react);
@@ -396,43 +594,34 @@ var _MyModal = __webpack_require__(/*! ../MyModal */ "./client/components/MyModa
 
 var _MyModal2 = _interopRequireDefault(_MyModal);
 
+var _Login = __webpack_require__(/*! ../Login */ "./client/components/Login/index.js");
+
+var _Login2 = _interopRequireDefault(_Login);
+
 __webpack_require__(/*! ./style.scss */ "./client/components/Navbar/style.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 // import Modal from 'react-responsive-modal';
-
-
-var Navbar = function (_React$Component) {
-  _inherits(Navbar, _React$Component);
-
-  function Navbar(props) {
-    _classCallCheck(this, Navbar);
-
-    return _possibleConstructorReturn(this, (Navbar.__proto__ || Object.getPrototypeOf(Navbar)).call(this, props));
-  }
-
-  _createClass(Navbar, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
+var Navbar = function Navbar(props) {
+  return _react2.default.createElement(
+    'div',
+    { className: 'navbar' },
+    _react2.default.createElement(
+      _reactRouterDom.Link,
+      { to: '/', className: 'navbar_logo' },
+      _react2.default.createElement(
         'div',
-        { className: 'navbar' },
-        _react2.default.createElement(_MyModal2.default, {
-          name: 'Admin',
-          content: 'login modal'
-        })
-      );
-    }
-  }]);
-
-  return Navbar;
-}(_react2.default.Component);
+        null,
+        'CASATRAZO LOGO'
+      )
+    ),
+    _react2.default.createElement(_MyModal2.default, {
+      name: 'Admin',
+      content: _react2.default.createElement(_Login2.default, null)
+    })
+  );
+};
 
 exports.default = Navbar;
 
@@ -600,10 +789,15 @@ var _articles = __webpack_require__(/*! ./articles */ "./client/store/articles.j
 
 var _articles2 = _interopRequireDefault(_articles);
 
+var _modal = __webpack_require__(/*! ./modal */ "./client/store/modal.js");
+
+var _modal2 = _interopRequireDefault(_modal);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var mainReducer = (0, _redux.combineReducers)({
-  articles: _articles2.default
+  articles: _articles2.default,
+  showModal: _modal2.default
 });
 
 var middleware = (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.applyMiddleware)(_reduxThunk2.default, (0, _reduxLogger.createLogger)()));
@@ -611,6 +805,69 @@ var middleware = (0, _reduxDevtoolsExtension.composeWithDevTools)((0, _redux.app
 var store = (0, _redux.createStore)(mainReducer, middleware);
 
 exports.default = store;
+
+/***/ }),
+
+/***/ "./client/store/modal.js":
+/*!*******************************!*\
+  !*** ./client/store/modal.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.closeModal = exports.openModal = undefined;
+
+exports.default = function () {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultShowModal;
+  var action = arguments[1];
+
+  switch (action.type) {
+    case OPEN_MODAL:
+      return action.showModal;
+
+    case CLOSE_MODAL:
+      return action.showModal;
+
+    default:
+      return state;
+  }
+};
+
+var _axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+
+var _axios2 = _interopRequireDefault(_axios);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//INITIAL STATE
+var defaultShowModal = false;
+
+//ACTION TYPES
+var OPEN_MODAL = 'OPEN_MODAL';
+var CLOSE_MODAL = 'CLOSE_MODAL';
+
+//ACTION CREATORS
+var openModal = exports.openModal = function openModal() {
+  return {
+    type: OPEN_MODAL,
+    showModal: true
+  };
+};
+
+var closeModal = exports.closeModal = function closeModal() {
+  return {
+    type: CLOSE_MODAL,
+    showModal: false
+  };
+};
+
+//REDUCER
 
 /***/ }),
 
@@ -2340,6 +2597,44 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./client/components/Login/style.scss":
+/*!***************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./client/components/Login/style.scss ***!
+  \***************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./client/components/MyModal/style.scss":
+/*!*****************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./client/components/MyModal/style.scss ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".modal_btn {\n  cursor: pointer;\n  padding: 0 5px;\n  font-size: 16px;\n  font-family: 'Questrial';\n  border-style: none;\n  border-bottom: 2px solid black;\n  background-color: transparent; }\n", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/sass-loader/lib/loader.js!./client/components/Navbar/style.scss":
 /*!****************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/sass-loader/lib/loader.js!./client/components/Navbar/style.scss ***!
@@ -2352,7 +2647,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".navbar {\n  border: 1px solid blue;\n  display: flex;\n  justify-content: flex-end;\n  padding: 2% 5%; }\n", ""]);
+exports.push([module.i, ".navbar {\n  border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n  display: flex;\n  justify-content: space-between;\n  padding: 2% 5%; }\n  .navbar_logo {\n    font-size: 16px;\n    font-weight: 400;\n    text-decoration: none; }\n  .navbar_logo:active {\n    color: black; }\n", ""]);
 
 // exports
 

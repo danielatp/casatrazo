@@ -1,6 +1,15 @@
 .navbar {
-  border: 1px solid blue;
+  border-bottom: 1px solid rgba(0,0,0,0.3);
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 2% 5%;
+
+  &_logo {
+    font-size: 16px;
+    font-weight: 400;
+    text-decoration: none;
+  }
+  &_logo:active{
+    color: black;
+  }
 }

@@ -1,41 +1,51 @@
 import React from 'react';
 import Modal from 'react-responsive-modal';
+import { connect } from 'react-redux';
+import { openModal, closeModal } from '../../store/modal';
+import './style.scss';
 
 class MyModal extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      showModal: false,
       name: props.name,
       content: props.content
     }
-    this.onOpenModal = this.onOpenModal.bind(this);
-    this.onCloseModal = this.onCloseModal.bind(this);
   }
 
-  onOpenModal() {
-    this.setState({ showModal: true });
-  };
-
-  onCloseModal() {
-    this.setState({ showModal: false });
-  };
-
   render() {
-    const { showModal, name, content } = this.state;
+    const { name, content } = this.state;
+    const { onOpenModal, onCloseModal, showModal } = this.props;
     return (
       <div className='modal'>
         <button
           className='modal_btn'
-          onClick={this.onOpenModal}>
+          onClick={onOpenModal}>
           {name}
         </button>
-        <Modal open={showModal} onClose={this.onCloseModal} center>
-          {content}
-        </Modal>
+        <Modal
+          center
+          open={showModal}
+          onClose={onCloseModal}
+          children={content}
+        />
       </div>
     );
   }
 }
 
-export default MyModal;
+const mapStateToProps = (storeState) => {
+  return {
+    showModal: storeState.showModal,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onOpenModal: () => dispatch(openModal()),
+    onCloseModal: () => dispatch(closeModal())
+  }
+}
+
+const MyModalContainer = connect(mapStateToProps, mapDispatchToProps)(MyModal);
+export default MyModalContainer;

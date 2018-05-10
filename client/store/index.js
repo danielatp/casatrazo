@@ -3,11 +3,13 @@ import { createLogger } from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import articles from './articles';
-import showModal from './modal'
+import showModal from './modal';
+import user from './user';
 
 const mainReducer = combineReducers({
   articles,
-  showModal
+  showModal,
+  user
 })
 
 const middleware = composeWithDevTools(applyMiddleware(

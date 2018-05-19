@@ -5,6 +5,7 @@ const path = require("path");
 
 const app = express();
 const apiRouter = require('./api');
+const authRouter = require('./auth')
 
 app.use(volleyball);
 app.use(bodyParser.json())
@@ -12,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(express.static(path.join(__dirname, "../public")));
 app.use('/api', apiRouter);
+app.use('/auth', authRouter);
 
 app.use((err, req, res, next) => {
   console.error('There was a problem here')

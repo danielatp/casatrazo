@@ -31,6 +31,7 @@ const User = db.define('user', {
 });
 
 User.prototype.correctPassword = function (candidatePwd) {
+  console.log('correctPassword', User.encryptPassword(candidatePwd, this.salt) === this.password)
   return User.encryptPassword(candidatePwd, this.salt) === this.password
 }
 
@@ -48,10 +49,11 @@ User.encryptPassword = function (plainText, salt) {
 
 //HOOKS
 const setSaltAndValidateEmail = user => {
-  if (user.changed('password')){
+  console.log('setSaltAndValidateEmail was called')
+  // if (user.changed('password')){
     user.salt = User.generateSalt()
     user.password = User.encryptPassword(user.password, user.salt)
-  }
+  // }
 }
 
 User.beforeCreate(setSaltAndValidateEmail)

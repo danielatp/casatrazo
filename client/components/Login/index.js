@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { closeModal } from '../../store/modal';
+import { login } from '../../store/user';
 import './style.scss';
 
 
@@ -15,12 +16,10 @@ class Login extends React.Component {
     this.props.onCloseModal();
     const email = event.target.email.value
     const password = event.target.password.value
-    console.log('dsfzgdfgggs', { email, password })
-    // dispatch(login(email, password))
+    this.props.login(email, password);
   }
 
   render() {
-    console.log(this.props)
     return (
       <div className='login-wrapper'>
         <form onSubmit={this.handleSubmit}>
@@ -47,9 +46,16 @@ class Login extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onCloseModal: () => dispatch(closeModal())
+    onCloseModal: () => dispatch(closeModal()),
+    login: (email, password) => dispatch(login(email, password)),
+    // handleSubmit (event) {
+    //   event.preventDefault()
+    //   const email = event.target.email.value
+    //   const password = event.target.password.value
+    //   dispatch(login(email, password))
+    // }
   }
 }
 
-const LoginContainer = connect(null, mapDispatchToProps)(Login)
+const LoginContainer = connect(null, mapDispatchToProps)(Login);
 export default LoginContainer;

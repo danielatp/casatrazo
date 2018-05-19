@@ -6,6 +6,7 @@ import { fetchArticles } from '../../store/articles';
 import { me } from '../../store/user';
 import Navbar from '../Navbar';
 import AllArticles from '../AllArticles';
+import AllUsers from '../AllUsers';
 
 class Main extends React.Component {
   constructor(props){
@@ -25,8 +26,12 @@ class Main extends React.Component {
         <Link to='/articles'>
           see all articles
         </Link>
+        <Link to='/users'>
+          see all users
+        </Link>
         <Switch>
           <Route path='/articles' component={AllArticles} />
+          <Route path='/users' component={AllUsers} />
         </Switch>
       </div>
     )

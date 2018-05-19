@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import MyModalContainer from '../MyModal';
+import CreateUserForm from '../CreateUserForm'
 import { fetchUsers } from '../../store/users';
 
 class AllUsers extends Component {
@@ -15,6 +17,10 @@ class AllUsers extends Component {
     return(
       <div>
         <h2>All Users</h2>
+        <MyModalContainer
+          name='Create User'
+          content={<CreateUserForm />}
+        />
         <ul id='all-users-ul'>
           {this.props.users.map(user => {
             return(

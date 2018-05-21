@@ -4,6 +4,7 @@ import {Provider} from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import Main from './components/Main';
 import store from './store';
+import './index.scss'
 
 render(
   <Provider store = {store}>

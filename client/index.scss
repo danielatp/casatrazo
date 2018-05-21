@@ -1,9 +1,10 @@
+@import './common/variables.scss';
+
 *{
   margin: 0;
   padding: 0;
 }
 body {
-  background: #eee;
+  background: $grey;
   font-family: 'Questrial', sans-serif;
-
 }

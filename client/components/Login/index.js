@@ -48,12 +48,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onCloseModal: () => dispatch(closeModal()),
     login: (email, password) => dispatch(login(email, password)),
-    // handleSubmit (event) {
-    //   event.preventDefault()
-    //   const email = event.target.email.value
-    //   const password = event.target.password.value
-    //   dispatch(login(email, password))
-    // }
   }
 }
 

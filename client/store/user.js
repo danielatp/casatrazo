@@ -1,14 +1,15 @@
+//this file shoul be called currretUser
 import axios from 'axios';
 
 //INITIAL STATE
 const defaultUser = {};
 
 //ACTION TYPES
-const GET_USER = 'GET_USER';
+const SET_CURRENT_USER = 'SET_CURRENT_USER';
 const REMOVE_USER = 'REMOVE_USER';
 
 //ACTION CREATORS
-const getUser = (user) => ({type: GET_USER, user})
+const setCurrentUser = (user) => ({type: SET_CURRENT_USER, user})
 const removeUser = () => ({type: REMOVE_USER})
 
 //THUNK CREATORS
@@ -16,22 +17,22 @@ export const me = () =>
   dispatch =>
     axios.get('/auth/me')
       .then(res =>
-        dispatch(getUser(res.data || defaultUser)))
+        dispatch(setCurrentUser(res.data || defaultUser)))
       .catch(err => console.log(err))
 
 export const login = (email, password) => {
   return function(dispatch){
-    axios.post('/auth/login', {email, password})
+    axios.put('/auth/login', {email, password})
     .then(res => res.data)
     .then(user => {
-      dispatch(getUser(user))})
+      dispatch(setCurrentUser(user))})
     .catch(err => console.log(err))
   }
 }
 
 export const logout = () => {
   return function(dispatch){
-    axios.post('/auth/logout')
+    axios.put('/auth/logout')
     .then(() => {
       dispatch(removeUser())
     })
@@ -42,11 +43,12 @@ export const logout = () => {
 //REDUCER
 export default function (state = defaultUser, action){
   switch (action.type){
-    case GET_USER:
+
+    case SET_CURRENT_USER:
       return action.user;
 
     case REMOVE_USER:
-      return defaultUser;
+      return {};
 
     default:
       return state;

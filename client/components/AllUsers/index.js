@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import MyModalContainer from '../MyModal';
+import MyModalContainer from '../../common/MyModal';
 import CreateUserForm from '../CreateUserForm'
 import { fetchUsers } from '../../store/users';
 
@@ -27,7 +27,6 @@ class AllUsers extends Component {
               <li key={user.id}>
                 <h3>{user.name}</h3>
                 <p>{`email: ${user.email}`}</p>
-                <p>{`password: ${user.password}`}</p>
                 <p>{`case: ${user.case}`}</p>
               </li>
             )

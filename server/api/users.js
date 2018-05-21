@@ -8,6 +8,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
+  // TO-DO: check if user already exists
   User.create(req.body)
   .then(user => res.json(user))
   .catch(next)

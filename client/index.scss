@@ -7,4 +7,10 @@
 body {
   background: $grey;
   font-family: 'Questrial', sans-serif;
+  color: black;
+
+  & a:-webkit-any-link {
+    color: black;
+    text-decoration: none;
+  }
 }

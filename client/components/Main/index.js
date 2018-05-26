@@ -5,6 +5,8 @@ import { me } from '../../store/user';
 import Navbar from '../Navbar';
 import AllArticles from '../AllArticles';
 import AllUsers from '../AllUsers';
+import { SideMenu } from '../SideMenu';
+import './index.scss';
 
 class Main extends React.Component {
   constructor(props){
@@ -16,21 +18,20 @@ class Main extends React.Component {
   }
 
   render(){
-    const { user } = this.props;
-
+    const { user, history } = this.props;
+    console.log('Main props:', this.props)
     return(
       <div>
-        <Navbar user={user} />
-        <Link to='/articles'>
-          see all articles
-        </Link>
-        <Link to='/users'>
-          see all users
-        </Link>
-        <Switch>
-          <Route path='/articles' component={AllArticles} />
-          <Route path='/users' component={AllUsers} />
-        </Switch>
+        <Navbar user={user} history={history} />
+        <div className='main-wrapper'>
+          <SideMenu user={user} />
+          <div className='main-wrapper_content'>
+            <Switch>
+              <Route path='/articles' component={AllArticles} />
+              <Route path='/users' component={AllUsers} />
+            </Switch>
+          </div>
+        </div>
       </div>
     )
   }

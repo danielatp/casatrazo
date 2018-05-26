@@ -1,0 +1,24 @@
+.sidemenu-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: fit-content;
+  background: rgba(0,0,0,0.1);
+  position: relative;
+  left: 0;
+  height: 50%;
+
+  &_item {
+    border-left: 3px solid black;
+    margin: 5px;
+    padding: 2px 5px;
+    width: 120px;
+  }
+  &_item:hover {
+    background: black;
+    border-left: 3px solid white;
+    a:-webkit-any-link{
+      color: white;
+    }
+  }
+}

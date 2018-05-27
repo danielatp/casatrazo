@@ -25,7 +25,9 @@ class Main extends React.Component {
       <div>
         <Navbar user={user} history={history} />
         <div className='main-wrapper'>
-          <SideMenu user={user} />
+          <div className='main-wrapper_sidemenu'>
+            <SideMenu user={user} />
+          </div>
           <div className='main-wrapper_content'>
             <Switch>
               <Route exact path='/' component={Home} />

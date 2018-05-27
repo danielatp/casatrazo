@@ -1,3 +1,5 @@
+// https://github.com/alex3165/react-mapbox-gl
+
 import React from 'react';
 import ReactMapboxGl, { Layer, Feature }  from "react-mapbox-gl";
 
@@ -11,17 +13,20 @@ export default class ReactMap extends React.Component {
   render() {
     return (
       <Map
-      style="mapbox://styles/mapbox/streets-v9"
-      containerStyle={{
-        height: '40vh',
-        width: '50vw',
-        border: '3px solid black'
-      }}>
+        style="mapbox://styles/mapbox/streets-v9"
+        containerStyle={{
+          height: '40vh',
+          width: '100%',
+          border: '3px solid black'
+        }}
+        center={[-77.0272688, -12.1255775]}
+        zoom={[13]}
+      >
         <Layer
           type="symbol"
           id="marker"
           layout={{ "icon-image": "marker-15" }}>
-          <Feature coordinates={[-0.481747846041145, 51.3233379650232]}/>
+          <Feature coordinates={[-77.0272688, -12.1255775]}/>
         </Layer>
     </Map>
     );

@@ -5,6 +5,7 @@ import { me } from '../../store/user';
 import Navbar from '../Navbar';
 import AllArticles from '../AllArticles';
 import AllUsers from '../AllUsers';
+import Home from '../Home';
 import { SideMenu } from '../SideMenu';
 import './index.scss';
 
@@ -19,7 +20,7 @@ class Main extends React.Component {
 
   render(){
     const { user, history } = this.props;
-    console.log('Main props:', this.props)
+
     return(
       <div>
         <Navbar user={user} history={history} />
@@ -27,6 +28,7 @@ class Main extends React.Component {
           <SideMenu user={user} />
           <div className='main-wrapper_content'>
             <Switch>
+              <Route exact path='/' component={Home} />
               <Route path='/articles' component={AllArticles} />
               <Route path='/users' component={AllUsers} />
             </Switch>

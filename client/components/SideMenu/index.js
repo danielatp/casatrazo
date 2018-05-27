@@ -4,7 +4,6 @@ import './index.scss';
 
 export const SideMenu = (props) => {
   const { user } = props;
-  console.log('sidebar props', props)
 
     return (
       <div className='sidemenu-wrapper'>

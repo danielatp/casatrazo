@@ -6,6 +6,7 @@ import Navbar from '../Navbar';
 import AllArticles from '../AllArticles';
 import AllUsers from '../AllUsers';
 import Home from '../Home';
+import Calendar from '../Calendar';
 import { SideMenu } from '../SideMenu';
 import './index.scss';
 
@@ -33,6 +34,7 @@ class Main extends React.Component {
               <Route exact path='/' component={Home} />
               <Route path='/articles' component={AllArticles} />
               <Route path='/users' component={AllUsers} />
+              <Route path='/calendar' component={Calendar} />
             </Switch>
           </div>
         </div>

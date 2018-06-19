@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import MyModalContainer from '../../common/MyModal';
-import CreateUserForm from '../CreateUserForm'
+import CreateUserForm from './CreateUserForm'
 import { fetchUsers } from '../../store/users';
 
 class AllUsers extends Component {

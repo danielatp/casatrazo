@@ -14,11 +14,18 @@ export const SideMenu = (props) => {
         </div>
         {
           user && user.name ?
-          <div className='sidemenu-wrapper_item'>
-            <Link to='/users'>
-              <span>see all users</span>
-            </Link>
-          </div>
+          <React.Fragment>
+            <div className='sidemenu-wrapper_item'>
+              <Link to='/users'>
+                <span>see all users</span>
+              </Link>
+            </div>
+            <div className='sidemenu-wrapper_item'>
+              <Link to='/calendar'>
+                <span>calendar</span>
+              </Link>
+            </div>
+          </React.Fragment>
           :
           null
         }

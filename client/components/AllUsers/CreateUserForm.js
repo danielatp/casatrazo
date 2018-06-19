@@ -5,7 +5,7 @@ import { createUser } from '../../store/users';
 // import './style.scss';
 
 
-class CreateUser extends React.Component {
+class CreateUserForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -90,5 +90,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const CreateUserContainer = connect(null, mapDispatchToProps)(CreateUser);
-export default CreateUserContainer;
+const CreateUserFormContainer = connect(null, mapDispatchToProps)(CreateUserForm);
+export default CreateUserFormContainer;

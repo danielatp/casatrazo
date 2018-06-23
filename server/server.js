@@ -28,10 +28,15 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use('/api', apiRouter);
 app.use('/auth', authRouter);
 
+app.use('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'))
+})
+
 app.use((err, req, res, next) => {
   console.error('There was a problem here')
   console.error(err)
   res.status(err.status || 500).send(err.message)
 })
+
 
 module.exports = app;

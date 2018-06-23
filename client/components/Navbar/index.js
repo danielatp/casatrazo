@@ -20,7 +20,7 @@ class Navbar extends React.Component {
 
   render() {
     const { user } = this.props;
-    console.log('navbar props', this.props)
+
     return (
       <div className='navbar'>
         <Link to='/' className='navbar_logo'>

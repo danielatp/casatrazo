@@ -20,7 +20,7 @@ class Main extends React.Component {
   }
 
   render(){
-    const { user, history } = this.props;
+    const { user, history, isLoggedIn } = this.props;
 
     return(
       <div>
@@ -33,8 +33,12 @@ class Main extends React.Component {
             <Switch>
               <Route exact path='/' component={Home} />
               <Route path='/articles' component={AllArticles} />
-              <Route path='/users' component={AllUsers} />
-              <Route path='/calendar' component={Calendar} />
+              {isLoggedIn &&
+                <Switch>
+                  <Route path='/users' component={AllUsers} />
+                  <Route path='/calendar' component={Calendar} />
+                </Switch>
+              }
             </Switch>
           </div>
         </div>
@@ -45,7 +49,8 @@ class Main extends React.Component {
 
 const mapStateToProps = (storeState) => {
   return {
-    user: storeState.user
+    user: storeState.user,
+    isLoggedIn: !!storeState.user.id
   }
 }
 
